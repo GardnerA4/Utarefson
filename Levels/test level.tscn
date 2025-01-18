@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://ccpgul15330nv"]
+[gd_scene load_steps=3 format=3 uid="uid://ccpgul15330nv"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://ny8cuf7hj0ts" path="res://Scenes/Player.tscn" id="1_lu1mh"]
+[ext_resource type="Texture2D" uid="uid://c21nftj0b8vuk" path="res://assets/icon.svg" id="2_x0ttg"]
+
+[node name="level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_lu1mh")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(233, -203)
+texture = ExtResource("2_x0ttg")
