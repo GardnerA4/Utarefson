@@ -39,4 +39,7 @@ offset_bottom = -66.0
 max_value = 10.0
 show_percentage = false
 
+[node name="Charge Timer" type="Timer" parent="."]
+wait_time = 1.395
+
 [connection signal="timeout" from="Swing Cooldown" to="." method="_on_swing_cooldown_timeout"]

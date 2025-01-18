@@ -6,9 +6,10 @@ extends CharacterBody2D
 var speed = 300.0
 var can_swing : bool = true
 
+
 func _physics_process(delta):
 	
-	charge.value += delta
+	charge.value += delta * 10 
 	
 	velocity.x = 0
 	velocity.y = 0
@@ -28,8 +29,6 @@ func _process(delta):
 	var mouse_position = get_global_mouse_position()
 	look_at(mouse_position)
 	
-	if Input.is_action_pressed("Attack"):
-		swing()
 	
 
 func swing():
@@ -49,9 +48,24 @@ func _on_swing_cooldown_timeout():
 
 func _input(event):
 	if event.is_action_pressed("Charge"):
-		print("charge")
 		charge.value = 0
 		charge.visible = true
+		speed = 30
 	if event.is_action_released("Charge"):
-		print("release")
 		charge.visible = false
+		lunge()
+		speed = 300
+		
+	if Input.is_action_pressed("Attack"):
+		swing()
+
+
+func lunge():
+	
+	var lunge_speed = charge.value * 2000
+
+	var mouse_position = get_global_mouse_position()
+	var direction = (mouse_position - global_position).normalized()
+
+	velocity = direction * lunge_speed
+	move_and_slide()
