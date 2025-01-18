@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ny8cuf7hj0ts"]
+[gd_scene load_steps=5 format=3 uid="uid://ny8cuf7hj0ts"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_bi5rs"]
 [ext_resource type="Texture2D" uid="uid://c21nftj0b8vuk" path="res://assets/icon.svg" id="2_ok00a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1t1xv"]
 size = Vector2(110, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htwlx"]
+size = Vector2(169, 94)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_bi5rs")
@@ -15,3 +18,11 @@ texture = ExtResource("2_ok00a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_1t1xv")
+
+[node name="Attack Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Hitbox"]
+position = Vector2(142, 3)
+shape = SubResource("RectangleShape2D_htwlx")
+
+[node name="Swing Cooldown" type="Timer" parent="."]
