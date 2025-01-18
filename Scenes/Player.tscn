@@ -30,4 +30,13 @@ disabled = true
 wait_time = 0.5
 one_shot = true
 
+[node name="Charge" type="ProgressBar" parent="."]
+visible = false
+offset_left = -108.0
+offset_top = -93.0
+offset_right = 115.0
+offset_bottom = -66.0
+max_value = 10.0
+show_percentage = false
+
 [connection signal="timeout" from="Swing Cooldown" to="." method="_on_swing_cooldown_timeout"]

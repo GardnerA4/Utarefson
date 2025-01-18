@@ -1,10 +1,15 @@
 extends CharacterBody2D
 
+@onready var charge = $Charge
+
 
 var speed = 300.0
 var can_swing : bool = true
 
 func _physics_process(delta):
+	
+	charge.value += delta
+	
 	velocity.x = 0
 	velocity.y = 0
 	
@@ -40,3 +45,13 @@ func _on_swing_cooldown_timeout():
 	can_swing = true
 	$"Attack Hitbox/CollisionShape2D".disabled = true
 	#remove disable when animiation added
+
+
+func _input(event):
+	if event.is_action_pressed("Charge"):
+		print("charge")
+		charge.value = 0
+		charge.visible = true
+	if event.is_action_released("Charge"):
+		print("release")
+		charge.visible = false
