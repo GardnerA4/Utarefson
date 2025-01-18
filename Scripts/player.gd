@@ -66,6 +66,9 @@ func lunge():
 
 	var mouse_position = get_global_mouse_position()
 	var direction = (mouse_position - global_position).normalized()
-
+	
 	velocity = direction * lunge_speed
+	
+	swing()
+	#adding animation will elongate this velocity
 	move_and_slide()
