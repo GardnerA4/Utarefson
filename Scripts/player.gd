@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 @onready var charge = $Charge
 
-
+var max_health = 100
+var current_health = max_health
 var speed = 300.0
 var can_swing : bool = true
 
@@ -72,3 +73,13 @@ func lunge():
 	swing()
 	#adding animation will elongate this velocity
 	move_and_slide()
+	
+
+
+func _on_hurtbox_area_entered(area):
+	if area.name == "Damage Zone":
+		current_health -= 10
+		if current_health <= 0:
+			current_health = max_health
+			print("you died")
+		print(current_health)
