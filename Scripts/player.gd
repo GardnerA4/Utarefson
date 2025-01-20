@@ -28,13 +28,13 @@ func _physics_process(delta):
 
 func _process(delta):
 	var mouse_position = get_global_mouse_position()
-	look_at(mouse_position)
+	$Aim.look_at(mouse_position)
 	
 	
 
 func swing():
 	if can_swing:
-		$"Attack Hitbox/CollisionShape2D".disabled = false
+		$"Aim/Attack Hitbox/CollisionShape2D".disabled = false
 		# play animation 
 		# disable hitbox
 		$"Swing Cooldown".start()
@@ -43,7 +43,7 @@ func swing():
 
 func _on_swing_cooldown_timeout():
 	can_swing = true
-	$"Attack Hitbox/CollisionShape2D".disabled = true
+	$"Aim/Attack Hitbox/CollisionShape2D".disabled = true
 	#remove disable when animiation added
 
 
