@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://v2segjvqemat" path="res://Assets/MapTiles.png" id="1_sw813"]
 [ext_resource type="Texture2D" uid="uid://23k0v2g62tgx" path="res://Assets/Light.png" id="2_jyjby"]
-[ext_resource type="PackedScene" uid="uid://cx5c4psahk2j5" path="res://Scenes/VillagerDude.tscn" id="3_moii0"]
+[ext_resource type="PackedScene" uid="uid://b00kbukend6s1" path="res://Scenes/VillagerDude.tscn" id="3_moii0"]
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xjvm5"]
 polygon = PackedVector2Array(13, -16, 13, -11, -11, 13, -16, 13, -16, 10, -13, 10, 10, -13, 10, -16)
 
