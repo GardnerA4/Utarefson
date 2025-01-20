@@ -11,7 +11,7 @@ var health = 100
 var despawn_range = 5000
 
 var bloodtype: int = 0
-@onready var player: CharacterBody2D = %Player
+@onready var player: CharacterBody2D = $"../../Player"
 
 
 #region About
