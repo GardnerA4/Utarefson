@@ -1,10 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://cn8rn70ollh5c"]
+[gd_scene load_steps=4 format=3 uid="uid://cn8rn70ollh5c"]
+
+[ext_resource type="Texture2D" uid="uid://4m1n6l2wkvdp" path="res://Assets/Screenshot_2025-01-20_180712.png" id="1_fy380"]
+[ext_resource type="Script" path="res://Scripts/guard.gd" id="1_hvxtq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6uygb"]
 
 [node name="Guard" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_hvxtq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(0.0628024, 0.0722435)
+texture = ExtResource("1_fy380")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_6uygb")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
