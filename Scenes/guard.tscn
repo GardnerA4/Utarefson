@@ -38,3 +38,4 @@ autostart = true
 shape = SubResource("CapsuleShape2D_p0p8f")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Damage Zone" to="." method="_on_damage_zone_area_entered"]

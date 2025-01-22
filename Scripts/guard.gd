@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 const speed = 200 
+var health = 30
 
 @export var player: Node2D
 @onready var nav_agent = $NavigationAgent2D
@@ -17,3 +18,11 @@ func makepath():
 
 func _on_timer_timeout():
 	makepath()
+
+
+func _on_damage_zone_area_entered(area):
+	if area.name == "Attack Hitbox":
+		health -= 10
+		print(health)
+	if health <= 0:
+		queue_free()
