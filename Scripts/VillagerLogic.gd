@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var rng = RandomNumberGenerator.new()
+var rng = RandomNumberGenerator.new() # Used to get a new RNG seed. Still somewhat unsure if this is the best use case.
 const SPEED = 100
 var decel: float = 20
 var runspeed = 1
@@ -25,20 +25,20 @@ func _ready() -> void:
 	bloodtype = generate_blood_type()
 	identify_blood_type()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	distance_to_player = global_position.distance_to(player.global_position)
+	
 	velocity = velocity.move_toward(Vector2.ZERO, decel * delta)
 	if velocity.length() < 1:
 		velocity = Vector2.ZERO
 		
-	if health != 100:
-		if distance_to_player <= detection_range:
-			var direction = (global_position - player.global_position).normalized()
-			velocity = direction * SPEED
-		else:
-			velocity = Vector2.ZERO
+	#distance_to_player = global_position.distance_to(player.global_position)
+	#if health != 100:
+		#if distance_to_player <= detection_range:
+			#var direction = (global_position - player.global_position).normalized()
+			#velocity = direction * SPEED
+		#else:
+			#velocity = Vector2.ZERO
 	
 	#If the player has decided this villager is undesirable, they can run away, and the villager will despawn.
 	if distance_to_player >= despawn_range:
@@ -98,3 +98,28 @@ func identify_blood_type():
 		$Label.text = "B-"
 	elif bloodtype == 9:
 		$Label.text = "D-"
+
+func take_damage(dmg):
+	identify_blood_type()
+	health -= dmg
+	if health > 1:
+		print("Villager is ded!")
+		kill()
+	else:
+		return
+
+# Function for when the player drinks this character's blood. Enemies should also have this.
+# This returns the amount of blood the villager had, which is 80% of their current health
+# This should be called in conjunction with get_blood_type. (After, obviously)
+func draw_blood():
+	return (health * 0.8)
+	print("Villager is dead!")
+	kill()
+
+func _get_blood_type():
+	return bloodtype
+
+func kill():
+	#Anim info for death.
+	#await logic.
+	queue_free()
