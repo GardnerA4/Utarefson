@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cabpmxi6rfr"
+path="res://.godot/imported/Utarefson_slash_hit_sfx.mp3-b2cd40197e384173f511d6c4349e4f0c.mp3str"
+
+[deps]
+
+source_file="res://Assets/Utarefson SFX/Utarefson_slash_hit_sfx.mp3"
+dest_files=["res://.godot/imported/Utarefson_slash_hit_sfx.mp3-b2cd40197e384173f511d6c4349e4f0c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
