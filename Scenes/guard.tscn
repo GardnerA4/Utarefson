@@ -1,9 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn8rn70ollh5c"]
+[gd_scene load_steps=5 format=3 uid="uid://cn8rn70ollh5c"]
 
 [ext_resource type="Texture2D" uid="uid://4m1n6l2wkvdp" path="res://Assets/Screenshot_2025-01-20_180712.png" id="1_fy380"]
 [ext_resource type="Script" path="res://Scripts/guard.gd" id="1_hvxtq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6uygb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0p8f"]
+radius = 19.0
+height = 46.0
 
 [node name="Guard" type="CharacterBody2D"]
 collision_layer = 2
@@ -27,5 +31,10 @@ debug_enabled = true
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="Damage Zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Zone"]
+shape = SubResource("CapsuleShape2D_p0p8f")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

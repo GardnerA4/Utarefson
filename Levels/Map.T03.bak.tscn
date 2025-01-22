@@ -1214,12 +1214,13 @@ texture = ExtResource("2_onfcv")
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Villager" parent="Enemies" instance=ExtResource("3_amjqp")]
+position = Vector2(2379, 2290)
+
+[node name="Guard" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("5_x4rgj")]
+position = Vector2(2389, 2425)
+player = NodePath("../../Player")
 
 [node name="Player" parent="." instance=ExtResource("4_co54f")]
 position = Vector2(2523, 2246)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="Guard" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_x4rgj")]
-position = Vector2(2389, 2425)
-player = NodePath("../Player")
