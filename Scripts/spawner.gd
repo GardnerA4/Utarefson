@@ -3,8 +3,8 @@ extends Node2D
 const VILLAGER_DUDE = preload("res://Scenes/VillagerDude.tscn")
 const SOLDIER = preload("res://Scenes/VillagerDude.tscn")
 
-@export var spawn_radius: float = 600
-@export var despawn_radius: float = 1000
+@export var spawn_radius: float = 1500
+@export var despawn_radius: float = 2500
 @export var time_decrease: float = 0.1 #Make the game harder, decrease the spawn rate when the timner fires.
 
 @export var weight_villager: float = 90
