@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+
 var rng = RandomNumberGenerator.new() # Used to get a new RNG seed. Still somewhat unsure if this is the best use case.
 const SPEED = 100
 var decel: float = 20
@@ -9,6 +12,7 @@ var distance_to_player: int = 50
 var detection_range: int = 350
 var health = 100
 var despawn_range = 2500
+var blood_identified: bool = false
 
 var bloodtype: int = 0
 
@@ -28,7 +32,7 @@ func _ready() -> void:
 	rng.randomize() #Gets a new seed, just for this little guy.
 	player = find_player_character()
 	bloodtype = generate_blood_type()
-	identify_blood_type()
+	# identify_blood_type() Used for testing and debugging.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -49,12 +53,14 @@ func _process(delta: float) -> void:
 		print("DIAG: A villager has despawned due to distance.")
 		queue_free()
 	
+	animate()
+	
 	move_and_slide() #Move/Slide does not exist here? TODO: Resolve. (CharBody2D?)
 
 
 # Moves the villager in a random direction every 3 seconds.
 func _on_timer_timeout() -> void:
-	print("DIAG: Villager timer ended.")
+	# print("DIAG: Villager timer ended.") # This gets pretty spammy.
 	change_Direction()
 	runspeed = SPEED
 	velocity = direction * runspeed
@@ -68,10 +74,31 @@ func change_Direction():
 	direction = Vector2(rng.randf() * 2 - 1, rng.randf() * 2 - 1).normalized()
 	# Normalized makes the angles a little more natural.
 	
+	#Function ran when the Villager moves. Gather direction based on it's direction, and change animation based on that.
+func animate():
+	# Why did I use vectors? I don't know. I hate Vectors.
+	# Values for what direction the villager's sprite should be facing.
+	#var facing_up = Vector2(0, -0.5) # No 'up' direction used
+	var facing_down = Vector2(0, 0.5)
+	var facing_left = Vector2(-0.5, 0)
+	var facing_right = Vector2(0.5, 0)
+	
+	if direction.y > facing_down.y:
+		animated_sprite.animation = "FrontView"
+		animated_sprite.play()
+	elif direction.x < facing_left.x:
+		animated_sprite.animation = "SideView"
+		animated_sprite.flip_h = true
+		animated_sprite.play()
+	elif direction.x > facing_right.x:
+		animated_sprite.animation = "SideView"
+		animated_sprite.play()
+		animated_sprite.flip_h = false
 	
 func generate_blood_type():
 	## Different blood types do different things.
 	## Each blood type could increase the value by 3%, but decrease it by 1%?
+	## For temporary (30s, 60s, 90s, 120s?) changes, the values could increase by 30%, but be decreased by 5%?
 	# S + / - Speed
 	# L + / - Lunge Distance
 	# H + / - Max Health (?)
@@ -85,6 +112,7 @@ func generate_blood_type():
 
 # This will allow the game to show what blood type the villager has. This will allow the player to pick and choose their victims.
 func identify_blood_type():
+	blood_identified = true
 	if bloodtype == 0:
 		$Label.text = "S+"
 	elif bloodtype == 1:
@@ -130,3 +158,13 @@ func kill():
 	#Anim info for death.
 	#await logic.
 	queue_free()
+
+func _on_damage_zone_area_entered(area):
+	if blood_identified == false:
+		identify_blood_type()
+	
+	if area.name == "Attack Hitbox":
+		health -= 10
+		print(health)
+	if health <= 0:
+		kill()

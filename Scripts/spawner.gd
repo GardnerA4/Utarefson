@@ -1,7 +1,7 @@
 extends Node2D
 
 const VILLAGER_DUDE = preload("res://Scenes/VillagerDude.tscn")
-const SOLDIER = preload("res://Scenes/VillagerDude.tscn")
+const SOLDIER = preload("res://Scenes/guard.tscn")
 
 @export var spawn_radius: float = 1500
 @export var despawn_radius: float = 2500
