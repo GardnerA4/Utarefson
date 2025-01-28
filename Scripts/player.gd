@@ -7,6 +7,10 @@ var current_health = max_health
 var speed = 300.0
 var can_swing : bool = true
 
+var lunge_buff = 0
+var heal = 10
+var ap = 10 
+
 
 func _physics_process(delta):
 	
@@ -54,16 +58,20 @@ func _input(event):
 		speed = 30
 	if event.is_action_released("Charge"):
 		charge.visible = false
+		var old_speed = speed
 		lunge()
-		speed = 300
+		speed = old_speed
 		
 	if Input.is_action_pressed("Attack"):
 		swing()
+	
+	if Input.is_action_pressed("Bite"):
+		bite()
 
 
 func lunge():
 	
-	var lunge_speed = charge.value * 2000
+	var lunge_speed = (charge.value + lunge_buff) * 2000
 
 	var mouse_position = get_global_mouse_position()
 	var direction = (mouse_position - global_position).normalized()
@@ -83,3 +91,45 @@ func _on_hurtbox_area_entered(area):
 			current_health = max_health
 			print("you died")
 		print(current_health)
+		
+
+func bite():
+	$"Bite Radius/CollisionShape2D".disabled = false
+	$"Bite Radius/CollisionShape2D".disabled = true 
+
+
+
+func _on_bite_radius_body_entered(body):
+	var bloodtype: int 
+	if body is CharacterBody2D and body.name == "VillagerDude":
+		print("bite")
+		bloodtype = body.bloodtype
+		if bloodtype == 0:
+			speed += 10
+		elif bloodtype == 1:
+			lunge_buff += 1
+		elif bloodtype == 2:
+			max_health += 5
+			current_health += 5
+		elif bloodtype == 3:
+			heal += 5
+		elif bloodtype == 4:
+			ap += 2 
+		elif bloodtype == 5:
+			speed -= 5
+		elif bloodtype == 6:
+			lunge_buff -= 1
+		elif bloodtype == 7:
+			max_health -= 5
+			current_health -= 5
+		elif bloodtype == 8:
+			heal -= 5
+		elif bloodtype == 9:
+			ap -= 1
+		current_health += heal
+		if current_health > max_health:
+			current_health = max_health
+		self.position = body.global_position
+		#set speed to 0
+		#playbite animation
+		#set speed to normal 

@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://v2segjvqemat" path="res://Assets/MapTiles.png" id="1_dnkct"]
 [ext_resource type="Script" path="res://Scripts/map.gd" id="1_phwbe"]
 [ext_resource type="PackedScene" uid="uid://pfomrurrmu75" path="res://Scenes/spawner.tscn" id="2_js1ls"]
-[ext_resource type="PackedScene" uid="uid://b00kbukend6s1" path="res://Scenes/VillagerDude.tscn" id="3_2x4px"]
 [ext_resource type="PackedScene" uid="uid://ny8cuf7hj0ts" path="res://Scenes/Player.tscn" id="4_fh862"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fcm0d"]

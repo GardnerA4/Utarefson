@@ -12,10 +12,9 @@ var despawn_range = 2500
 
 var bloodtype: int = 0
 
-@export var player: CharacterBody2D = null
+@export var player: Node2D
 #@onready var player: CharacterBody2D = %Player
 @export var despawn_radius: float = 2500
-
 
 
 #region About
@@ -26,7 +25,6 @@ var bloodtype: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rng.randomize() #Gets a new seed, just for this little guy.
-	player = find_player_character()
 	bloodtype = generate_blood_type()
 	identify_blood_type()
 
@@ -59,11 +57,7 @@ func _on_timer_timeout() -> void:
 	runspeed = SPEED
 	velocity = direction * runspeed
 
-func find_player_character() -> CharacterBody2D:
-	return get_tree().get_nodes_in_group("player")[0]
 
-	# Changes the Villager's movement to a random direction.
-	# We could probably add some logic here that forces the villager to move away from Utarefson
 func change_Direction():
 	direction = Vector2(rng.randf() * 2 - 1, rng.randf() * 2 - 1).normalized()
 	# Normalized makes the angles a little more natural.
@@ -74,7 +68,7 @@ func generate_blood_type():
 	## Each blood type could increase the value by 3%, but decrease it by 1%?
 	# S + / - Speed
 	# L + / - Lunge Distance
-	# H + / - Max Health (?)
+	# H + / - Max Health 
 	# B + / - Blood gained from kill
 	# D + / - Max Damage (Should never be able to kill a villager in one hit.
 	var random = rng.randi_range(0, 9)
