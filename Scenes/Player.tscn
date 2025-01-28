@@ -42,6 +42,11 @@ show_percentage = false
 [node name="Charge Timer" type="Timer" parent="."]
 wait_time = 1.395
 
+[node name="Bite Cooldown" type="Timer" parent="."]
+
+[node name="Bite Active Time" type="Timer" parent="."]
+wait_time = 0.5
+
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_mask = 3
 
@@ -66,6 +71,8 @@ shape = SubResource("CircleShape2D_kfgfi")
 disabled = true
 
 [connection signal="timeout" from="Swing Cooldown" to="." method="_on_swing_cooldown_timeout"]
+[connection signal="timeout" from="Bite Cooldown" to="." method="_on_bite_cooldown_timeout"]
+[connection signal="timeout" from="Bite Active Time" to="." method="_on_bite_active_time_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="Bite Radius" to="." method="_on_bite_radius_area_entered"]
 [connection signal="body_entered" from="Bite Radius" to="." method="_on_bite_radius_body_entered"]

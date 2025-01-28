@@ -6,10 +6,11 @@ var max_health = 100
 var current_health = max_health
 var speed = 300.0
 var can_swing : bool = true
+var can_bite : bool = true
 
 var lunge_buff = 0
 var heal = 10
-var ap = 10 
+var ap = 10 #attack potentcy 
 
 
 func _physics_process(delta):
@@ -94,14 +95,17 @@ func _on_hurtbox_area_entered(area):
 		
 
 func bite():
-	$"Bite Radius/CollisionShape2D".disabled = false
-	$"Bite Radius/CollisionShape2D".disabled = true 
+	if can_bite:
+		$"Bite Radius/CollisionShape2D".disabled = false
+		can_bite = false
+		$"Bite Cooldown".start()
+		$"Bite Active Time".start()
 
 
 
 func _on_bite_radius_body_entered(body):
 	var bloodtype: int 
-	if body is CharacterBody2D and body.name == "VillagerDude":
+	if body is CharacterBody2D and body.name == "Villager":
 		print("bite")
 		bloodtype = body.bloodtype
 		if bloodtype == 0:
@@ -133,3 +137,12 @@ func _on_bite_radius_body_entered(body):
 		#set speed to 0
 		#playbite animation
 		#set speed to normal 
+		body.queue_free()
+
+
+func _on_bite_cooldown_timeout():
+	can_bite = true
+
+
+func _on_bite_active_time_timeout():
+	$"Bite Radius/CollisionShape2D".disabled = true

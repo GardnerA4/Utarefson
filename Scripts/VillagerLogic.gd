@@ -124,3 +124,11 @@ func kill():
 	#Anim info for death.
 	#await logic.
 	queue_free()
+
+
+func _on_damage_zone_area_entered(area):
+	if area.name == "Attack Hitbox":
+		health -= player.ap
+		print(health)
+	if health <= 0:
+		queue_free()

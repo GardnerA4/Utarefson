@@ -22,7 +22,7 @@ func _on_timer_timeout():
 
 func _on_damage_zone_area_entered(area):
 	if area.name == "Attack Hitbox":
-		health -= 10
+		health -= player.ap
 		print(health)
 	if health <= 0:
 		queue_free()

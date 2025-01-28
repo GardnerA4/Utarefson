@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b00kbukend6s1"]
+[gd_scene load_steps=5 format=3 uid="uid://b00kbukend6s1"]
 
 [ext_resource type="Script" path="res://Scripts/VillagerLogic.gd" id="1_6hijg"]
 [ext_resource type="Texture2D" uid="uid://byja7io3fn6kv" path="res://Assets/Villager.png" id="2_27ep3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b15il"]
 radius = 17.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_86jmq"]
+radius = 17.0294
 
 [node name="Villager" type="CharacterBody2D"]
 script = ExtResource("1_6hijg")
@@ -25,4 +28,10 @@ offset_top = -36.0
 offset_right = 24.0
 offset_bottom = -13.0
 
+[node name="Damage Zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Zone"]
+shape = SubResource("CircleShape2D_86jmq")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Damage Zone" to="." method="_on_damage_zone_area_entered"]
