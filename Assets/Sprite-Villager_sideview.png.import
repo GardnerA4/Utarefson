@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwrghxaxa2ypk"
-path="res://.godot/imported/Sprite-Villager_sideview.png-2066f5723cf12e8f09b1ddef1cfc9dab.ctex"
+path="res://.godot/imported/Sprite-Villager_sideview.png-47c4d1ec4388d29b575e71343e03d870.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprite-Villager_sideview.png"
-dest_files=["res://.godot/imported/Sprite-Villager_sideview.png-2066f5723cf12e8f09b1ddef1cfc9dab.ctex"]
+source_file="res://assets/Sprite-Villager_sideview.png"
+dest_files=["res://.godot/imported/Sprite-Villager_sideview.png-47c4d1ec4388d29b575e71343e03d870.ctex"]
 
 [params]
 

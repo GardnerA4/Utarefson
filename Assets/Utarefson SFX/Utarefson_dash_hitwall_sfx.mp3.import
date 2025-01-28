@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://y5031rksmikr"
-path="res://.godot/imported/Utarefson_dash_hitwall_sfx.mp3-5fa0ea54820d58a87f259dae888c2a52.mp3str"
+path="res://.godot/imported/Utarefson_dash_hitwall_sfx.mp3-183c907643b1a66de353742062d0a62e.mp3str"
 
 [deps]
 
-source_file="res://Assets/Utarefson SFX/Utarefson_dash_hitwall_sfx.mp3"
-dest_files=["res://.godot/imported/Utarefson_dash_hitwall_sfx.mp3-5fa0ea54820d58a87f259dae888c2a52.mp3str"]
+source_file="res://assets/Utarefson SFX/Utarefson_dash_hitwall_sfx.mp3"
+dest_files=["res://.godot/imported/Utarefson_dash_hitwall_sfx.mp3-183c907643b1a66de353742062d0a62e.mp3str"]
 
 [params]
 

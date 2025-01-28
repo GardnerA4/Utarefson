@@ -1,27 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://ny8cuf7hj0ts"]
+[gd_scene load_steps=5 format=3 uid="uid://ny8cuf7hj0ts"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_bi5rs"]
-[ext_resource type="Texture2D" uid="uid://cxkvuyj4uffcf" path="res://Assets/Sprite-utarefson_frontview.png" id="2_sytif"]
+[ext_resource type="Texture2D" uid="uid://c21nftj0b8vuk" path="res://assets/icon.svg" id="2_ok00a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1t1xv"]
-size = Vector2(38, 19)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cayij"]
-radius = 13.0
-height = 60.0
+size = Vector2(110, 110)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_htwlx"]
-size = Vector2(86.125, 52)
+size = Vector2(169, 94)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_bi5rs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_sytif")
+texture = ExtResource("2_ok00a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 24.5)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_1t1xv")
+
+[node name="Attack Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Hitbox"]
+position = Vector2(142, 3)
+shape = SubResource("RectangleShape2D_htwlx")
+disabled = true
 
 [node name="Swing Cooldown" type="Timer" parent="."]
 wait_time = 0.5
@@ -39,21 +42,4 @@ show_percentage = false
 [node name="Charge Timer" type="Timer" parent="."]
 wait_time = 1.395
 
-[node name="Hurtbox" type="Area2D" parent="."]
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, 5)
-shape = SubResource("CapsuleShape2D_cayij")
-
-[node name="Aim" type="Node2D" parent="."]
-
-[node name="Attack Hitbox" type="Area2D" parent="Aim"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Aim/Attack Hitbox"]
-position = Vector2(62.9375, 7)
-shape = SubResource("RectangleShape2D_htwlx")
-disabled = true
-
 [connection signal="timeout" from="Swing Cooldown" to="." method="_on_swing_cooldown_timeout"]
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
