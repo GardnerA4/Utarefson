@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccpgul15330nv"]
+[gd_scene load_steps=6 format=3 uid="uid://ccpgul15330nv"]
 
 [ext_resource type="PackedScene" uid="uid://ny8cuf7hj0ts" path="res://Scenes/Player.tscn" id="1_lu1mh"]
-[ext_resource type="Texture2D" uid="uid://c21nftj0b8vuk" path="res://assets/icon.svg" id="2_x0ttg"]
+[ext_resource type="Script" path="res://Scripts/test_level.gd" id="1_xgt1d"]
+[ext_resource type="Texture2D" uid="uid://c21nftj0b8vuk" path="res://Assets/icon.svg" id="2_x0ttg"]
+[ext_resource type="PackedScene" uid="uid://22l3udbkc1qo" path="res://Scenes/pause_menu.tscn" id="4_8mnr7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t77mv"]
+size = Vector2(203, 163.5)
 
 [node name="level" type="Node2D"]
+script = ExtResource("1_xgt1d")
 
 [node name="Player" parent="." instance=ExtResource("1_lu1mh")]
 
@@ -12,3 +18,14 @@
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(233, -203)
 texture = ExtResource("2_x0ttg")
+
+[node name="Damage Zone" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Zone"]
+position = Vector2(-203, -223)
+shape = SubResource("RectangleShape2D_t77mv")
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_8mnr7")]
+visible = false

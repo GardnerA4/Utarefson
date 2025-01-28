@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dvmharqrdw0mb"
+path="res://.godot/imported/Utarefson_slash_miss_sfx.mp3-aaa9b3545c6067eccfede482b69bf704.mp3str"
+
+[deps]
+
+source_file="res://Assets/Utarefson SFX/Utarefson_slash_miss_sfx.mp3"
+dest_files=["res://.godot/imported/Utarefson_slash_miss_sfx.mp3-aaa9b3545c6067eccfede482b69bf704.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byja7io3fn6kv"
-path="res://.godot/imported/Villager.png-ed4181b4725d5ef3277460f27edcd880.ctex"
+uid="uid://d20q6hfl64s60"
+path="res://.godot/imported/Sprite-Guard_Sideview.png-0ddadb39881be3f4d8b6f49f410c0667.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Villager.png"
-dest_files=["res://.godot/imported/Villager.png-ed4181b4725d5ef3277460f27edcd880.ctex"]
+source_file="res://Assets/Sprite-Guard_Sideview.png"
+dest_files=["res://.godot/imported/Sprite-Guard_Sideview.png-0ddadb39881be3f4d8b6f49f410c0667.ctex"]
 
 [params]
 
