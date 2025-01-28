@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://bhpogf1moqkte"]
 
-[ext_resource type="Texture2D" uid="uid://v2segjvqemat" path="res://assets/MapTiles.png" id="1_dnkct"]
-[ext_resource type="PackedScene" uid="uid://cx5c4psahk2j5" path="res://Scenes/VillagerDude.tscn" id="3_2x4px"]
+[ext_resource type="Texture2D" uid="uid://v2segjvqemat" path="res://Assets/MapTiles.png" id="1_dnkct"]
+[ext_resource type="PackedScene" uid="uid://b00kbukend6s1" path="res://Scenes/VillagerDude.tscn" id="3_2x4px"]
 [ext_resource type="PackedScene" uid="uid://ny8cuf7hj0ts" path="res://Scenes/Player.tscn" id="4_fh862"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fcm0d"]
