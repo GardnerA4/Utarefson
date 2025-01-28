@@ -11,9 +11,11 @@ var health = 100
 var despawn_range = 2500
 
 var bloodtype: int = 0
+
 @export var player: CharacterBody2D = null
 #@onready var player: CharacterBody2D = %Player
 @export var despawn_radius: float = 2500
+
 
 
 #region About
