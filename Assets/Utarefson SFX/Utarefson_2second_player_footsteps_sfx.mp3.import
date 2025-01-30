@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bhhbvmwdnp25s"
+path="res://.godot/imported/Utarefson_2second_player_footsteps_sfx.mp3-c0bef5112481c68474fc80a23e13b5cb.mp3str"
+
+[deps]
+
+source_file="res://Assets/Utarefson SFX/Utarefson_2second_player_footsteps_sfx.mp3"
+dest_files=["res://.godot/imported/Utarefson_2second_player_footsteps_sfx.mp3-c0bef5112481c68474fc80a23e13b5cb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
