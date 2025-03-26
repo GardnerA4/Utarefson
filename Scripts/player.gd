@@ -73,6 +73,7 @@ func _input(event):
 func lunge():
 	
 	var lunge_speed = (charge.value + lunge_buff) * 2000
+	var old_speed = speed
 
 	var mouse_position = get_global_mouse_position()
 	var direction = (mouse_position - global_position).normalized()
@@ -81,6 +82,8 @@ func lunge():
 	
 	swing()
 	#adding animation will elongate this velocity
+	speed = old_speed
+	
 	move_and_slide()
 	
 
